@@ -29,6 +29,12 @@
     color: #111;
 }
 
+.product:hover
+{
+    transform: scale(1.05);
+    transition-duration: 0.5s;
+}
+
 .product__price
 {
     margin-top: 5px;
@@ -44,4 +50,9 @@
 
     height: 100px;
     margin-bottom: 15px;
+}
+
+.product > button:hover
+{
+    background-color: #f0954b;
 }

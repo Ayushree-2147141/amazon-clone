@@ -7,6 +7,7 @@ import Login from './Login';
 import {auth} from './firebase';
 import {useStateValue} from './StateProvider';
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom'
+import Payment from './Payment';
 
 
 function App() {
@@ -14,8 +15,7 @@ function App() {
   useEffect(() => {
     //only run once when the app component loads...
     auth.onAuthStateChanged(authUser => {
-      console.log('THE USER IS >>>> ', authUser);
-
+      
       if(authUser)
       {
         //the user just logged in / the user was logged in
@@ -43,6 +43,7 @@ function App() {
       <Route path="/login" element={<> <Login /> </> } />
       <Route path="/" element={<> <Header /> <Home />  </>} />
       <Route path="/checkout" element={<>  <Header /> <Checkout />  </>} />
+      <Route path="/payment" element={<> <Header /><Payment /></>} />
     </Routes>
     </div>
   </Router>
