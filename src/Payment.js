@@ -43,21 +43,30 @@ function Payment() {
         event.preventDefault();
         setProcessing(true);
 
-        const payload = await stripe.confirmCardPayment(clientSecret, {
-            payment_method : {
-                card : elements.getElement(CardElement)
-            }
-        }).then(({ paymentIntent }) => {
-            //paymentIntent = payment confirmation
+        // const payload = await stripe.confirmCardPayment(clientSecret, {
+        //     payment_method : {
+        //         card : elements.getElement(CardElement)
+        //     }
+        // })
+        // .then(({ paymentIntent }) => {
+        //     //paymentIntent = payment confirmation
 
-            setSucceeded(true);
-            setError(null);
-            setProcessing(false);
+        //     setSucceeded(true);
+        //     setError(null);
+        //     setProcessing(false);
 
-            navigate('/orders', {replace: true});
+        //     dispatch({
+        //         type: 'EMPTY_BASKET'
+        //     })        
             
-        })
+        // })
+        dispatch({
+            type:'EMPTY_BASKET'
+        });
 
+        alert('Payment successful!');
+
+        navigate('/orders', {replace: true});
 
     }
 
@@ -134,7 +143,8 @@ function Payment() {
                                     prefix={"$"}
                                 />
                             
-                                <button disabled={processing || disabled || succeeded}>
+                                {/* <button disabled={processing || disabled || succeeded}> */}
+                                <button>
                                     <span>
                                         {processing ? <p>Processing</p>: "Buy Now"}
                                     </span>
